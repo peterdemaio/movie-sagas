@@ -27,9 +27,9 @@
   text-align: center;
   display: inline-flexbox;
   list-style-type: none;
-
-
+  margin-left: 5em
 }
+
 .ListItemLayout {
   display: flex;
   text-align: left;
@@ -37,5 +37,8 @@
 }
 
 .DescriptionBox {
-  padding: 10px
+  padding: 10px;
+  margin-left: 5em;
+  margin-right: 5em
+
 }

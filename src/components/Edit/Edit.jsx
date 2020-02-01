@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import Movies from '../Movies/Movies'
 import Details from '../Details/Details'
 
 
@@ -55,6 +54,12 @@ class Edit extends Component {
                 onChange={(event) => this.setDetails(event, 'description')}
                 ></textarea>
                 </div>
+                <h4>Genres this movie belongs to:</h4>
+                <ul>
+                    {this.props.reduxStore.genres.map(genre => 
+                    <li key={genre.name}>{genre.name}</li>
+                    )}
+                </ul>
                 </div>
             </Router>
         )

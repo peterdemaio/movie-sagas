@@ -9,21 +9,20 @@ class Movies extends Component {
 
     // We want the lis of movies to be shown on the home page on page load, so let's go get them.
     componentDidMount() {
-        this.getMovies()
-    }
-    // This functions dispatches an action to get the movies which will be heard over on the index.jsx
-    getMovies = () => {
         this.props.dispatch({
             type: 'GET_MOVIES'
         })
     }
     // This function makes a reducer with the information of the specific movie that was clicked
     movieDetail = (flick) => {
-        console.log(flick)
         this.props.dispatch({
-            type: 'MOVIE_DETAIL',
+            type: 'GET_GENRES',
             payload: flick
         })
+        // this.props.dispatch({
+        //     type: 'GET_GENRES',
+        //     payload: flick.id
+        // })
     }
 
     render() {
@@ -31,7 +30,7 @@ class Movies extends Component {
             <div>
                 <ul className="HomePageLayout">
                 {this.props.reduxStore.movies.map(flick =>
-                    <li className="ListItemLayout">
+                    <li className="ListItemLayout" key={flick.id}>
                         <Link to="/details">
                         <img 
                         src={flick.poster} 
@@ -40,9 +39,8 @@ class Movies extends Component {
                         onClick={(event) => this.movieDetail(flick)}/>
                         </Link>
                         <div className = "DescriptionBox" >
-                        <br></br>
                         <h1>{flick.title}</h1>
-                        <p>{flick.description}</p>
+                        <p><i>{flick.description}</i></p>
                         </div>
                     </li>
                 )}

@@ -17,19 +17,29 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery ('GET_MOVIES', getMovies)
     yield takeEvery ('EDIT_MOVIE', editMovie)
+    yield takeEvery ('GET_GENRES', getGenres)
 }
 
 // Get the movies from the server with axios using a generator function/saga
 function* getMovies(action) {
+    // console.log(action.payload)
     let response = yield axios.get('/api/movies')
-    console.log(response.data)
     yield put ({type: 'SET_MOVIES', payload: response.data})
+    // yield put ({type: 'GET_GENRES', payload: })
 }
 
 function* editMovie(action) {
-    console.log(action.payload.id)
+    // console.log(action.payload.id)
     let id = action.payload.id
     let response = yield axios.put(`/api/movies/:${id}`, action.payload)
+}
+
+function* getGenres(action) {
+    console.log(action.payload)
+    let id = action.payload.id
+    yield put ({ type: 'MOVIE_DETAIL', payload: action.payload})
+    let response = yield axios.get(`api/genres?id=${id}`);
+    yield put ({ type: 'SET_GENRES', payload: response.data});
 }
 
 // Create sagaMiddleware

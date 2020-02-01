@@ -5,7 +5,9 @@ import Movies from '../Movies/Movies'
 import Edit from '../Edit/Edit'
 
 class Details extends Component {
+
     render() {
+
         return (
             <Router>
                 <Link to="/"> Back to List </Link>

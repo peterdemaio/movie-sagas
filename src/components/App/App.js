@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux'
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, } from 'react-router-dom';
 import Movies from '../Movies/Movies.jsx'
 import Details from '../Details/Details'
 import Edit from '../Edit/Edit'
