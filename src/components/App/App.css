@@ -22,3 +22,20 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.HomePageLayout {
+  text-align: center;
+  display: inline-flexbox;
+  list-style-type: none;
+
+
+}
+.ListItemLayout {
+  display: flex;
+  text-align: left;
+  padding: 10px;
+}
+
+.DescriptionBox {
+  padding: 10px
+}

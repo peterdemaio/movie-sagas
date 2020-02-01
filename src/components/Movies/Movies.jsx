@@ -29,9 +29,9 @@ class Movies extends Component {
     render() {
         return (
             <div>
-                <h1>Movies list</h1>
+                <ul className="HomePageLayout">
                 {this.props.reduxStore.movies.map(flick =>
-                    <li>
+                    <li className="ListItemLayout">
                         <Link to="/details">
                         <img 
                         src={flick.poster} 
@@ -39,10 +39,14 @@ class Movies extends Component {
                         value={flick.id} 
                         onClick={(event) => this.movieDetail(flick)}/>
                         </Link>
-                        <h3>{flick.title}</h3>
+                        <div className = "DescriptionBox" >
+                        <br></br>
+                        <h1>{flick.title}</h1>
                         <p>{flick.description}</p>
+                        </div>
                     </li>
                 )}
+                </ul>
             </div>
         )
     }
