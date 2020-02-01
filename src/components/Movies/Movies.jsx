@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import Details from '../Details/Details'
+
 
 
 class Movies extends Component {
@@ -30,7 +32,7 @@ class Movies extends Component {
                 <h1>Movies list</h1>
                 {this.props.reduxStore.movies.map(flick =>
                     <li>
-                        <Link to="/edit">
+                        <Link to="/details">
                         <img 
                         src={flick.poster} 
                         alt={flick.title} 
