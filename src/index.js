@@ -41,7 +41,7 @@ const details = (state = {}, action) => {
     switch (action.type) {
         case 'MOVIE_DETAIL':
             return action.payload;
-        case 'MOVIE_DETAILS_EDITED':
+        case 'EDIT_MOVIE':
             return action.payload;
         default: 
             return state;

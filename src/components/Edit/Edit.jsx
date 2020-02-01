@@ -27,21 +27,21 @@ class Edit extends Component {
             type: 'EDIT_MOVIE',
             payload: this.state
         })
-        this.goBack()
+        // this.goBack()
     }
-    goBack = () => {
-        this.props.dispatch({
-            type: 'MOVIE_DETAILS_EDITED',
-            payload: this.state
-        })
-        this.props.history.push('/details')
-    }
+    // goBack = () => {
+    //     this.props.dispatch({
+    //         type: 'MOVIE_DETAILS_EDITED',
+    //         payload: this.state
+    //     })
+    //     this.props.history.push('/details')
+    // }
 
     render() {
         return (
             <Router>
                 <Link to="/details"> Cancel </Link>
-                <button onClick={this.sendDetails}> Save </button>
+                <Link onClick={this.sendDetails} to="/details"> Save </Link>
                 <div>
                     <Route exact path="/details" component={Details} />
                     <div>
