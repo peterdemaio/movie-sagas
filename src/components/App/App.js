@@ -11,6 +11,9 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <header className="header">
+          <h1>Movie-Saga Weekend Assignment</h1>
+        </header>
           <div>
             <Route exact path="/" component={Movies}  />
             <Route exact path="/details" component={Details} />

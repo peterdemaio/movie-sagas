@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
-import Details from '../Details/Details'
-
 
 
 class Movies extends Component {
 
+    
     // We want the lis of movies to be shown on the home page on page load, so let's go get them.
     componentDidMount() {
         this.props.dispatch({
@@ -19,10 +18,6 @@ class Movies extends Component {
             type: 'GET_GENRES',
             payload: flick
         })
-        // this.props.dispatch({
-        //     type: 'GET_GENRES',
-        //     payload: flick.id
-        // })
     }
 
     render() {
@@ -55,5 +50,3 @@ const mapReduxStateToProps = (reduxStore) => ({
 })
 
 export default connect(mapReduxStateToProps)(Movies);
-
-

@@ -4,6 +4,7 @@ import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import Details from '../Details/Details'
 
 
+
 class Edit extends Component {
 
     state = {
@@ -26,42 +27,41 @@ class Edit extends Component {
             type: 'EDIT_MOVIE',
             payload: this.state
         })
-        // this.goBack()
     }
-    // goBack = () => {
-    //     this.props.dispatch({
-    //         type: 'MOVIE_DETAILS_EDITED',
-    //         payload: this.state
-    //     })
-    //     this.props.history.push('/details')
-    // }
+
 
     render() {
         return (
             <Router>
-                <Link to="/details"> Cancel </Link>
-                <Link onClick={this.sendDetails} to="/details"> Save </Link>
-                <div>
+                <div className="center">
+                    <ul className="editUL">
+                      <li className="cancelButton"> <Link to="/details"> Cancel </Link></li>
+                       <li className="editLI"> <Link onClick={this.sendDetails} to="/details"> Save </Link> </li>
+                    </ul>
+                </div>
+                <div className="editPage">
                     <Route exact path="/details" component={Details} />
                     <div>
-                <input 
-                placeholder="Edit Title"
-                onChange={(event) => this.setDetails(event, 'title')}>
-                </input>
-                <br></br>
-                <textarea 
-                placeholder="Edit Description"
-                onChange={(event) => this.setDetails(event, 'description')}
-                ></textarea>
+                        <textarea
+                            className="editTitle"
+                            // placeholder={this.props.reduxStore.details.title}
+                            onChange={(event) => this.setDetails(event, 'title')}>
+                        {this.props.reduxStore.details.title}</textarea>
+                        <br></br>
+                        <textarea className="textArea"
+                            // value={this.props.reduxStore.details.description}
+                            // placeholder={this.props.reduxStore.details.description}
+                            onChange={(event) => this.setDetails(event, 'description')}
+                        >{this.props.reduxStore.details.description}</textarea>
+                    </div>
+                    <h1>Genres this movie belongs to:</h1>
+                    <ul className="genresUL">
+                        {this.props.reduxStore.genres.map(genre =>
+                            <li className="genresLI" key={genre.name}>{genre.name}</li>
+                        )}
+                    </ul>
                 </div>
-                <h4>Genres this movie belongs to:</h4>
-                <ul>
-                    {this.props.reduxStore.genres.map(genre => 
-                    <li key={genre.name}>{genre.name}</li>
-                    )}
-                </ul>
-                </div>
-            </Router>
+            </Router >
         )
 
     }
@@ -71,4 +71,5 @@ const mapReduxStateToProps = (reduxStore) => ({
     reduxStore
 })
 
-export default connect(mapReduxStateToProps)(Edit);
+
+export default (connect(mapReduxStateToProps)(Edit));

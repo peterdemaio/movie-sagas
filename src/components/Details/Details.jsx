@@ -10,13 +10,17 @@ class Details extends Component {
 
         return (
             <Router>
-                <Link to="/"> Back to List </Link>
-                <Link to="/edit"> Edit </Link>
-                <div>
+                <div className="center">
+                    <ul className="editUL">
+                        <li className="cancelButton"><Link to="/"> Back to List </Link></li>
+                        <li className="editLI"><Link to="/edit"> Edit </Link></li>
+                    </ul>
+                </div>
+                <div className="DescriptionBox">
                     <Route exact path="/" component={Movies} />
                     <Route exact path="/edit" component={Edit} />
                     <h1>{this.props.reduxStore.details.title}</h1>
-                    <p>{this.props.reduxStore.details.description}</p>
+                    <p><i>{this.props.reduxStore.details.description}</i></p>
                 </div>
             </Router>
         )

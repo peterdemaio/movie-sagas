@@ -3,11 +3,12 @@
 }
 
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+.header {
+  background-color: #033076;
+  min-height: 70px;
   padding: 20px;
   color: white;
+  text-align: center;
 }
 
 .App-title {
@@ -38,7 +39,64 @@
 
 .DescriptionBox {
   padding: 10px;
-  margin-left: 5em;
-  margin-right: 5em
+  margin-left: 10em;
+  margin-right: 10em;
+  text-align: center;
+}
 
+.editPage {
+  text-align: center
+}
+
+.genresUL {
+  list-style-type: none;
+  text-align: center;
+}
+
+.genresLI {
+  text-align: center;
+  font-size: 2.5em;
+}
+
+.editUL{
+  display: inline-flex;
+  text-align: center;
+  list-style-type: none;
+  padding: 1em
+}
+.center {
+  text-align: center;
+}
+
+.editLI{
+  padding: .5em;
+  border: solid 1px;
+  border-radius: 10px;
+  background-color: bisque;
+}
+.cancelButton {
+  padding: .5em;
+  border: solid 1px;
+  border-radius: 10px;
+  background-color: bisque;
+}
+
+.cancelButton:hover {
+  background-color: red;
+}
+
+.editLI:hover {
+  background-color: dodgerblue; 
+}
+
+.editTitle {
+  height: 2em;
+  width: 25em;
+  font-size: 1.5em;
+}
+
+.textArea {
+  height: 10em;
+  width: 25em;
+  font-size: 1.5em;
 }
