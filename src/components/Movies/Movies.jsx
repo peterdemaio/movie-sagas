@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// eslint-disable-next-line
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
 
 class Movies extends Component {

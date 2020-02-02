@@ -19,10 +19,6 @@ class Details extends Component {
                     <Route exact path="/" component={Movies} />
                     <Route exact path="/edit" component={Edit} />
                     <h1>{this.props.reduxStore.details.title}</h1>
-                    <img
-                        src={this.props.reduxStore.details.poster}
-                        alt={this.props.reduxStore.details.title}
-                        value={this.props.reduxStore.details.id} />
                     <p><i>{this.props.reduxStore.details.description}</i></p>
                     {/* These next lines get the genres from redux and displays them */}
                     <div className="genresList">
