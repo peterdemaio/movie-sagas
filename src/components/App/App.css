@@ -38,9 +38,14 @@
 }
 
 .DescriptionBox {
-  padding: 10px;
   margin-left: 10em;
-  margin-right: 10em;
+  margin-right: 20em;
+  text-align: center;
+}
+
+.DetailBox {
+  margin-left: 20em;
+  margin-right: 20em;
   text-align: center;
 }
 
@@ -99,4 +104,16 @@
   height: 10em;
   width: 25em;
   font-size: 1.5em;
+}
+
+.genresList {
+  display: inline-flex;
+  list-style-type: none;
+  font-style: italic;
+  padding: .2em;
+  
+}
+.genresListItem {
+  padding: .2em;
+  font-size: 1.75em
 }

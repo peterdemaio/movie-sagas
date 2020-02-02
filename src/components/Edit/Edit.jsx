@@ -6,7 +6,7 @@ import Details from '../Details/Details'
 
 
 class Edit extends Component {
-
+    // State keeps the information the user changed
     state = {
         id: this.props.reduxStore.details.id,
         title: this.props.reduxStore.details.title,
@@ -14,14 +14,14 @@ class Edit extends Component {
     }
 
     setDetails = (event, type) => {
-        // This should update state with the details submitted
+        // This updates state with the details submitted
         this.setState({
             ...this.state,
             [type]: event.target.value
         })
         console.log('Ready to edit with', this.state)
     }
-
+    //This saves the new information on click of the save button
     sendDetails = () => {
         this.props.dispatch({
             type: 'EDIT_MOVIE',
@@ -29,14 +29,13 @@ class Edit extends Component {
         })
     }
 
-
     render() {
         return (
             <Router>
                 <div className="center">
                     <ul className="editUL">
-                      <li className="cancelButton"> <Link to="/details"> Cancel </Link></li>
-                       <li className="editLI"> <Link onClick={this.sendDetails} to="/details"> Save </Link> </li>
+                        <li className="cancelButton"> <Link to="/details"> Cancel </Link></li>
+                        <li className="editLI"> <Link onClick={this.sendDetails} to="/details"> Save </Link> </li>
                     </ul>
                 </div>
                 <div className="editPage">
@@ -46,20 +45,13 @@ class Edit extends Component {
                             className="editTitle"
                             // placeholder={this.props.reduxStore.details.title}
                             onChange={(event) => this.setDetails(event, 'title')}>
-                        {this.props.reduxStore.details.title}</textarea>
+                            {this.props.reduxStore.details.title}</textarea>
                         <br></br>
-                        <textarea className="textArea"
-                            // value={this.props.reduxStore.details.description}
-                            // placeholder={this.props.reduxStore.details.description}
-                            onChange={(event) => this.setDetails(event, 'description')}
-                        >{this.props.reduxStore.details.description}</textarea>
+                        <textarea
+                            className="textArea"
+                            onChange={(event) => this.setDetails(event, 'description')}>
+                            {this.props.reduxStore.details.description}</textarea>
                     </div>
-                    <h1>Genres this movie belongs to:</h1>
-                    <ul className="genresUL">
-                        {this.props.reduxStore.genres.map(genre =>
-                            <li className="genresLI" key={genre.name}>{genre.name}</li>
-                        )}
-                    </ul>
                 </div>
             </Router >
         )
@@ -70,6 +62,5 @@ class Edit extends Component {
 const mapReduxStateToProps = (reduxStore) => ({
     reduxStore
 })
-
 
 export default (connect(mapReduxStateToProps)(Edit));

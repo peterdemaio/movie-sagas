@@ -9,51 +9,47 @@ import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 // Import saga middleware
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery, put} from 'redux-saga/effects'
+import { takeEvery, put } from 'redux-saga/effects'
 import axios from 'axios';
 
 
 // Create the rootSaga generator function
 function* rootSaga() {
-    yield takeEvery ('GET_MOVIES', getMovies)
-    yield takeEvery ('EDIT_MOVIE', editMovie)
-    yield takeEvery ('GET_GENRES', getGenres)
+    yield takeEvery('GET_MOVIES', getMovies)
+    yield takeEvery('EDIT_MOVIE', editMovie)
+    yield takeEvery('GET_GENRES', getGenres)
 }
 
 // Get the movies from the server with axios using a generator function/saga
 function* getMovies(action) {
-    // console.log(action.payload)
     let response = yield axios.get('/api/movies')
-    yield put ({type: 'SET_MOVIES', payload: response.data})
-    // yield put ({type: 'GET_GENRES', payload: })
+    yield put({ type: 'SET_MOVIES', payload: response.data })
 }
 
 function* editMovie(action) {
-    // console.log(action.payload.id)
     let id = action.payload.id
     let response = yield axios.put(`/api/movies/:${id}`, action.payload)
 }
-
+// this generator function gets the details of the specific movie clicked on as well as it's genres
 function* getGenres(action) {
-    console.log(action.payload)
     let id = action.payload.id
-    yield put ({ type: 'MOVIE_DETAIL', payload: action.payload})
+    yield put({ type: 'MOVIE_DETAIL', payload: action.payload })
     let response = yield axios.get(`api/genres?id=${id}`);
-    yield put ({ type: 'SET_GENRES', payload: response.data});
+    yield put({ type: 'SET_GENRES', payload: response.data });
 }
 
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
-
 // this reducer remembers which movie the person clicked on for the details page
+// It also saves the new details when they are edited
 const details = (state = {}, action) => {
     switch (action.type) {
         case 'MOVIE_DETAIL':
             return action.payload;
         case 'EDIT_MOVIE':
             return action.payload;
-        default: 
+        default:
             return state;
     }
 }
@@ -66,8 +62,7 @@ const movies = (state = [], action) => {
             return state;
     }
 }
-
-// Used to store the movie genres
+// Used to store the movie genres from the server
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
@@ -91,6 +86,6 @@ const storeInstance = createStore(
 // Pass rootSaga into our sagaMiddleware
 sagaMiddleware.run(rootSaga);
 
-ReactDOM.render(<Provider store={storeInstance}><App /></Provider>, 
+ReactDOM.render(<Provider store={storeInstance}><App /></Provider>,
     document.getElementById('root'));
 registerServiceWorker();
