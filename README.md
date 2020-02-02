@@ -14,14 +14,16 @@ Homepage, user clicks on a movie poster
 ![screenshot1](public/images/Screenshot1.png)
 
 User is brought to the descriptions page where genres are now displayed
-![screenshot2](public/images/Screenshot2.png)
+
+![screenshot2](public/images/screenshot2.png)
 
 User can edit title and description
 
-![screenshot3](public/images/Screenshot3.png)
+![screenshot3](public/images/screenshot3.png)
 
 Details are updated back on the homepage
-![screenshot4](public/images/Screenshot4.png)
+
+![screenshot4](public/images/screenshot4.png)
 
 ### Prerequisites
 
